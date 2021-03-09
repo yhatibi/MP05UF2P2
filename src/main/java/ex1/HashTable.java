@@ -14,10 +14,12 @@ public class HashTable {
     private int ITEMS = 0;
     private HashEntry[] entries = new HashEntry[SIZE];
 
+    //
     public int count(){
         return this.ITEMS;
     }
 
+    //
     public int size(){
         return this.SIZE;
     }
