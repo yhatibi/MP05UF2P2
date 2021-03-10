@@ -1,26 +1,29 @@
 package ex1;
 
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class HashTableTest {
 
     @Test
     public void addAtHash() {
         HashTable hashTable = new HashTable();
-        String key = "12";
+        int items = 8;
+        String key1 = "12";
         String value= "hello world";
-        hashTable.put(key, value);
+        hashTable.put(key1, value);
 
-        Assertions.assertEquals(value, hashTable.get(key));
+        Assertions.assertEquals(value, hashTable.get(key1));
 
-        for(int i = 0; i<8; i++) {
-            final String string = String.valueOf(i);
-            hashTable.put(string, string);
+
+        // Añadir 8 ITEMS some key values.
+        for(int i=0; i<items; i++) {
+            final String key = String.valueOf(i);
+            hashTable.put(key, key);
         }
 
-        for (int i = 0; i < 8 ; i++) {
+        for (int i = 0; i < items ; i++) {
             final String string = String.valueOf(i);
             Assertions.assertEquals(string, hashTable.get(String.valueOf(i)));
         }
@@ -35,7 +38,7 @@ public class HashTableTest {
         String value= "hello world";
         hashTable.put(key, value);
 
-        //Borrar hash
+        //Borrar hashEntry
         hashTable.drop(key);
 
         Assertions.assertEquals(null, hashTable.get(key));
@@ -45,41 +48,26 @@ public class HashTableTest {
     @Test
     public void countHash() {
         HashTable hashTable = new HashTable();
-        int i=0;
-        // Put some key values.
+        int items = 8;
 
-
-
-        for(; i<8; i++) {
+        // Añadir 8 ITEMS some key values.
+        for(int i=0; i<items; i++) {
             final String key = String.valueOf(i);
             hashTable.put(key, key);
         }
 
-        //
-        System.out.println(hashTable.size());
+        // Quitar 2 items
+        hashTable.drop("2");
+        hashTable.drop("3");
+        System.out.println(hashTable.count());
 
-        Assertions.assertEquals(hashTable, hashTable.count());
+        Assertions.assertEquals(6, hashTable.count());
     }
 
     @Test
     public void sizeHash() {
         HashTable hashTable = new HashTable();
-        int i=0;
-        // Put some key values.
-        for(; i<8; i++) {
-            final String key = String.valueOf(i);
-            hashTable.put(key, key);
-        }
-
-        //
-        System.out.println(hashTable.toString());
-
-        //
-        String[] lines = hashTable.toString().split("\r\n|\r|\n");
-        int sizeLines =  lines.length;
-
-
-        Assertions.assertEquals(sizeLines, hashTable.size());
+        Assertions.assertEquals(16, hashTable.size());
     }
 
 
