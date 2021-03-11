@@ -45,9 +45,7 @@ public class HashTableTest {
         for(int i=0; i<items; i++) {
             final String key = String.valueOf(i);
             Assertions.assertEquals(key, hashTable.get(key));
-
         }
-
 
     }
 
