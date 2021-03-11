@@ -1,12 +1,13 @@
-package ex1;
+package ex4;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 class HashTableTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void count() {
         HashTable hashTable = new HashTable();
         Assertions.assertEquals(16, hashTable.size());
@@ -14,6 +15,8 @@ class HashTableTest {
 
     @Test
     void size() {
+        HashTable hashTable = new HashTable();
+        Assertions.assertEquals(15, hashTable.size());
     }
 
     @Test
@@ -26,9 +29,5 @@ class HashTableTest {
 
     @Test
     void drop() {
-    }
-
-    @Test
-    void testToString() {
     }
 }

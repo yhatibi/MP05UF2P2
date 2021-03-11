@@ -33,10 +33,14 @@ public class HashTable {
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
-        if(entries[hash] == null) {
+        if(entries[hash] == null ) {
             entries[hash] = hashEntry;
         }
-        else {
+        else if (entries[hash].key == key){ //BUG Remplazar nuevo por viejo con misma llave
+            entries[hash] = hashEntry;
+        }
+        else{
+
             HashEntry temp = entries[hash];
             while(temp.next != null)
                 temp = temp.next;
@@ -44,7 +48,7 @@ public class HashTable {
             temp.next = hashEntry;
             hashEntry.prev = temp;
         }
-        ITEMS++;
+        ITEMS++; // BUG sumar items
     }
 
     /**
@@ -83,7 +87,7 @@ public class HashTable {
                 if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
                 temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
             }
-            ITEMS--;
+            ITEMS--; //BUG Restar items
         }
     }
 
